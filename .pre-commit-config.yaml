@@ -1,24 +1,7 @@
 repos:
--   repo: local
-    hooks:
-    - id: nbdev_clean # hook id 
-      name: nbdev clean # some readable name
-      entry: bash .pre-commit-hooks/run_nbdev_on_staged_files.sh # path to the script
-      language: system # how to run the script
-      types: [jupyter] # what to run it on
-      # stages: [commit] # when to run it
-
-# - repo: local
-#   hooks:
-#   - id: nbdev_clean
-#     name: nbdev clean
-#     # entry: nbdev_clean
-#     entry: /gpfs01/berens/user/rgonzalesmarquez/.local/bin/nbdev_clean
-#     language: system
-#     pass_filenames: false
-
-  # - id: nbdev_export
-  #   name: nbdev export
-  #   entry: /gpfs01/berens/user/rgonzalesmarquez/.local/bin/nbdev_export
-  #   language: system
-  #   pass_filenames: false
+- repo: https://github.com/fastai/nbdev
+  rev: 2.2.10
+  hooks:
+  - id: nbdev_clean
+    args: [--fname=./] # $PATH can be "./"
+                       # having the root directory of the project suffices for all nbs in child directories to be succesfully cleaned
